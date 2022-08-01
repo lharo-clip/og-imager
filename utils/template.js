@@ -1,114 +1,80 @@
 const templateHTML = `
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
     <style>{{styles}}</style>
-  </head>
-  <body id="body">
-    <main>
-      <div class='logo'>
-        {{#if logoUrl}}
-          <img src="{{logoUrl}}" alt="logo" />
-        {{else}}
-          <span>Example Logo</span>
-        {{/if}}
-      </div>
-      <div class="title">{{title}}</div>
-      <div>
-        {{#if tags}}
-          <ul class="tags">
-          {{#each tags}}
-            <li class="tag-item">#{{this}}</li>
-          {{/each}}
-          </ul>
-        {{/if}}
-        {{#if path}}
-          <p class="path">{{path}}</p>
-        {{/if}}
-      </div>
-    </main>
-  </body>
-</html>
-`;
+    <body>
+        <div class="OG">
+            <div class="left">
+                    <div class="divimg"></div>
+            </div>
+            <div class="right">
+                <div class="empty"></div>
+                <div class="pagaA">
+                    Paga a 
+                    <b>{{public_name}}</b>
+                </div>
+                <div class="url">
+                    clip.mx/@{{alias}}
+                </div>
+                <div class="empty"></div>
+                <div class="empty"></div>
+                <div class="empty"></div>
+                <div class="empty"></div>
+            </div>
+        </div>     
+    </body> 
+</html>`;
 
 const templateStyles = `
-@font-face {
-  font-family: Source Code Pro;
-  src: url(https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&display=swap);
-}
-
-* {
-  box-sizing: border-box;
-}
-
-:root {
-  font-size: 16px;
-  font-family: Source Code Pro, monospace;
-}
-
 body {
-  padding: 2.5rem;
-  height: 90vh;
-  background: #042f7d;
-  {{#if bgUrl}}
-  background-image: url({{bgUrl}});
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  {{else}}
-  background: linear-gradient(to right, #042f7d, #007eff);
-  color: #00ffae;
-  {{/if}}
+  width: 600px;
+  height: 315px;
 }
 
-main {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.OG{
+    display: flex;
+    width: 600px;
+    height: 315px;
+    background-image: url({{og_background}});
 }
 
-.logo {
-  width: 15rem;
-  height: 3rem;
-}
-.logo span {
-  font-size: 2rem;
-  color: yellow;
-  font-style: italic;
-  text-decoration: wavy;
-  font-variant: unicase;
-}
-.logo img {
-  width: 100%;
-  height: 100%;
+.left{
+    width: 240px;
+    height: 240px;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
 }
 
-.title {
-  font-size: {{fontSize}};
-  text-transform: capitalize;
-  margin: 0.25rem 0;
-  font-weight: bold;
+.right{
+    display: grid;
+    border-radius: 25px;
+    width: 360px;
+    height: auto;
+    text-align: center;
+}
+.pagaA{
+    align-self: center;
+    font-size: large;
+    color: #000000;
 }
 
-.tags {
-  display: flex;
-  list-style-type: none;
-  padding-left: 0;
-  color: #ff00d2;
-  font-size: 1.5rem;
+.url{
+    font-size: large;
+    color: #fa4d09;
 }
 
-.tag-item {
-  margin-right: 0.5rem;
-}
-
-.path {
-  color: #6dd6ff;
-  font-size: 1.25rem;
+.divimg{
+    width: 160px;
+    height: 160px;
+    border-radius: 300px;
+    background: #ffffff;
+    background-image: url({{logo_image}});
+    background-size: cover;
 }
 `;
 

@@ -1,5 +1,6 @@
 
 // server.js
+require('dotenv/config') // require the dotenv/config at beginning of file
 const express = require("express");
 const generateImage = require("./utils/generateImage");
 const { getCompiledHTML } = require("./utils/compileTemplate");
@@ -7,6 +8,8 @@ const { getCompiledHTML } = require("./utils/compileTemplate");
 const app = express();
 const port = process.env.PORT || 3000;
 
+const opengraph = process.env.OPENGRAPH_LOGO
+const dns = process.env.IMAGE_DNS
 
 app.get('/', (req, res) => {
   const compiledHTML = getCompiledHTML(req.query);
@@ -14,14 +17,17 @@ app.get('/', (req, res) => {
   res.status(200).send(compiledHTML);
 })
 
-
 app.get('/ogimage', async (req, res) => {
   try {
-    const compiledHTML = getCompiledHTML(req.query);
+    const { proxy_merchant_id, img } = req.query;
+    console.log('req.query', req.query)
+    const compiledHTML = getCompiledHTML({
+      ...req.query,
+      og_background: opengraph,
+      logo_image: `${dns}/${proxy_merchant_id}/${img}`,
+    });
   
     const image = await generateImage({
-      width: req.query.width,
-      height: req.query.height,
       content: compiledHTML
     });
       
