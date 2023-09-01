@@ -38,7 +38,7 @@ body {
     display: flex;
     width: 600px;
     height: 315px;
-    background-image: url({{og_background}});
+    background-image: url(https://raw.githubusercontent.com/lharo-clip/Assets/main/OG_img.jpg);
 }
 
 .left{
@@ -73,7 +73,7 @@ body {
     height: 160px;
     border-radius: 300px;
     background: #ffffff;
-    background-image: url({{logo_image}});
+    background-image: url(https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
     background-size: cover;
 }
 `;

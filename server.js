@@ -8,7 +8,8 @@ const { getCompiledHTML } = require("./utils/compileTemplate");
 const app = express();
 const port = process.env.PORT || 3000;
 
-const opengraph = process.env.OPENGRAPH_LOGO
+const opengraph = "https://raw.githubusercontent.com/lharo-clip/Assets/main/OG_img.jpg"
+
 const dns = process.env.IMAGE_DNS
 
 app.get('/', (req, res) => {
@@ -20,11 +21,11 @@ app.get('/', (req, res) => {
 app.get('/ogimage', async (req, res) => {
   try {
     const { proxy_merchant_id, img } = req.query;
-    console.log('req.query', req.query)
+
     const compiledHTML = getCompiledHTML({
       ...req.query,
-      og_background: opengraph,
-      logo_image: `${dns}/${proxy_merchant_id}/${img}`,
+      og_background: "https://raw.githubusercontent.com/lharo-clip/Assets/main/OG_img.jpg",
+      logo_image: 'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
     });
   
     const image = await generateImage({
